@@ -110,7 +110,7 @@ print(f"∂t/∂H    = {dt_dH:.6f}  (Myr/(pW/kg))  → Marginal effect = {margin
 
 abs_marg = [abs(marginal_k), abs(marginal_h), abs(marginal_H)]
 most_sensitive = var_names[np.argmax(abs_marg)]
-print(f"\n>>> Variable with largest absolute marginal effect at mean: {most_sensitive}, value = {max(abs_marg):.6f} Myr")
+
 
 # ================== 8. Advanced sensitivity analysis ==================
 print("\n" + "="*60)
@@ -137,7 +137,7 @@ print(f"∂t/∂k_cr (mean) = {ame_dk:.6f}  → AME marginal effect = {ame_margi
 print(f"∂t/∂h_cr (mean) = {ame_dh:.6f}  → AME marginal effect = {ame_marginal_h:.6f} Myr")
 print(f"∂t/∂H    (mean) = {ame_dH:.6f}  → AME marginal effect = {ame_marginal_H:.6f} Myr")
 ame_sens = var_names[np.argmax([abs(ame_marginal_k), abs(ame_marginal_h), abs(ame_marginal_H)])]
-print(f">>> Most sensitive variable under AME: {ame_sens}")
+
 
 # ---- 8.2 Stratified marginal effects (fixed H levels) ----
 print("\n【Stratified Marginal Effects】—— sensitivity variation at different H levels (h_cr, k_cr fixed at their means)")
@@ -159,13 +159,5 @@ for H_val in H_levels:
 
     abs_vals_H = [abs(marg_k_H), abs(marg_h_H), abs(marg_H_H)]
     sens_var_H = var_names[np.argmax(abs_vals_H)]
-    print(f"  Most sensitive variable at this H level: {sens_var_H}")
 
-# ================== 9. Synthesis ==================
-print("\n" + "="*60)
-print("【Synthesis】")
-print(f"1. Marginal effect at the mean: most sensitive variable = {most_sensitive}, value = {max(abs_marg):.6f} Myr")
-print(f"2. Average Marginal Effect (AME): most sensitive variable = {ame_sens}")
-print("3. Stratified analysis: if H is the most sensitive at all levels, the conclusion is robust;")
-print("   if h_cr or k_cr overtake at high H, then other parameters dominate in extreme regimes.")
-print("\nNote: AME is recommended as the primary conclusion as it represents the average sensitivity across the entire dataset.")
+

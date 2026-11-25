@@ -95,7 +95,7 @@ for H_val in H_levels:
 point_colors = cmap(norm(df['H']))
 sc = ax.scatter(df['h_cr'], df['k_cr'], df['t'],
                 c=point_colors, s=50, edgecolors='k', linewidth=0.5,
-                alpha=0.85, label='Observed data (colored by H)', zorder=10)
+                alpha=0.85, label='Model data (colored by H)', zorder=10)
 
 # ---- Colorbar ----
 mappable = cm.ScalarMappable(norm=norm, cmap=cmap)
@@ -108,7 +108,7 @@ legend_elements = []
 for H_val in H_levels:
     color = cmap(norm(H_val))
     legend_elements.append(Rectangle((0,0), 1, 1, fc=color, alpha=0.6,
-                                     label=f'H = {H_val} surface'))
+                                     label=f'H = {H_val} pW/kg surface'))
 
 # Add data point legend
 legend_elements.append(sc)
